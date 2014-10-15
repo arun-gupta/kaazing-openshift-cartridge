@@ -1,6 +1,6 @@
 #!/bin/bash
 KAAZING_JMS_GATEWAY_JAR=kaazing-websocket-gateway-jms-4.0.5.tar.gz
-KAAZING_JMS_GATEWAY_URL=http://developer.kaazing.com/downloads/jms-edition-download/
+KAAZING_JMS_GATEWAY_URL=http://kaazingcorp.cachefly.net/com/download/jms/4.0.5.359/kaazing-websocket-gateway-jms-4.0.5.tar.gz
 
 set -x 
 
