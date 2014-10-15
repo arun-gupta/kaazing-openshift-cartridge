@@ -1,6 +1,8 @@
 #!/bin/bash
 set -x 
 
+echo "start script from DIY cartridge"
+
 cd $OPENSHIFT_DATA_DIR
 
 # Start ActiveMQ
