@@ -1,0 +1,20 @@
+Kaazing JMS Gateway OpenShift Cartridge
+=======================================
+
+This cartridge will download Kaazing JMS Gateway and start it.
+
+# Create the OpenShift Application
+
+. Create a DIY application using this git repo as source code:
++
+[source, text]
+----
+rhc app-create kaazing diy --from-code=git://github.com/arungupta/kaazing-openshift-cartridge.git
+----
++
+. Create a port-forward from your local machine to your remote server
++
+[source,text]
+----
+TBD
+----

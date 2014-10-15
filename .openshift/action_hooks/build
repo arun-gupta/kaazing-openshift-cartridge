@@ -1,0 +1,14 @@
+#!/bin/bash
+KAAZIN_JMS_GATEWAY_JAR=kaazing-websocket-gateway-jms-4.0.5.tar.gz
+KAAZIN_JMS_GATEWAY_URL=http://developer.kaazing.com/downloads/jms-edition-download/
+
+set -x 
+
+cd $OPENSHIFT_DATA_DIR
+
+if [ ! -e "$KAAZING_JMS_GATEWAY_JAR" ]; then
+	wget $KAAZING_JMS_GATEWAY_URL -O $KAAZING_JMS_GATEWAY_JAR
+
+	tar xzf $KAAZING_JMS_GATEWAY_JAR
+fi
+

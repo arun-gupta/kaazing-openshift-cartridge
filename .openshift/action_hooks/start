@@ -1,0 +1,10 @@
+#!/bin/bash
+set -x 
+
+cd $OPENSHIFT_DATA_DIR
+
+# Start ActiveMQ
+nohup java -jar apache-activemq-5.5.1/bin/run.jar start > $OPENSHIFT_DIY_LOG_DIR/activemq-server.log 2>&1 &
+
+# Start Kaazing JMS Gateway
+nohup ./kaazing-websocket-gateway-jms-4.0.5/bin/gateway.start > $OPENSHIFT_DIY_LOG_DIR/kaazing-gateway.log 2>&1 &
