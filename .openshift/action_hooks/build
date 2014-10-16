@@ -25,7 +25,7 @@ if [ ! -e "$KAAZING_JMS_GATEWAY_JAR" ]; then
 	sed -i "94 a\
         <property name=\"host\" value=\"$OPENSHIFT_DIY_IP\" />" $ACTIVEMQ/conf/jetty.xml
 
-	sed -i "s/0.0.0.0/$OPENSHIFT_DIY_IP/g" $KAAZING_JMS_GATEWAY/conf/*.xml
+	sed -i "s/localhost/$OPENSHIFT_DIY_IP/g" $KAAZING_JMS_GATEWAY/conf/*.xml
     echo "Patching done." >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1 
 fi
 
