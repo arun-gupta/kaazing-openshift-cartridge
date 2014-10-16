@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x 
 
-echo "start script from DIY cartridge" >> ${OPENSHIFT_DIY_LOG_DIR}/diy.log 2>&1
+echo "******* start script from DIY cartridge" >> ${OPENSHIFT_DIY_LOG_DIR}/diy.log 2>&1
 
 cd $OPENSHIFT_DATA_DIR
 
