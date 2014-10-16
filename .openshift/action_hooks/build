@@ -32,11 +32,11 @@ if [ ! -e "$KAAZING_JMS_GATEWAY_JAR" ]; then
 	sed -i "512 a\
         -->" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
 	sed -i "495 a\
-        -->" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
+        <!--" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
 	sed -i "491 a\
         -->" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
 	sed -i "475 a\
-        -->" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
+        <!--" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
     echo "Patching done." >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1 
 fi
 
