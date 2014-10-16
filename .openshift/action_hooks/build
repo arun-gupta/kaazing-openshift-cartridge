@@ -26,3 +26,17 @@ if [ ! -e "$KAAZING_JMS_GATEWAY_JAR" ]; then
     echo "Patching done." >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1 
 fi
 
+cd $OPENSHIFT_DATA_DIR
+
+# Start ActiveMQ
+date >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1
+echo "Starting ActiveMQ ..." >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1 
+nohup java -jar apache-activemq-5.5.1/bin/run.jar start > $OPENSHIFT_DIY_LOG_DIR/activemq-server.log 2>&1 &
+echo "ActiveMQ done." >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1 
+
+# Start Kaazing JMS Gateway
+date >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1
+echo "Starting Kaazing Gateway ..." >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1 
+nohup ./kaazing-websocket-gateway-jms-4.0.5/bin/gateway.start > $OPENSHIFT_DIY_LOG_DIR/kaazing-gateway.log 2>&1 &
+echo "Kaazing Gateway done." >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1 
+
