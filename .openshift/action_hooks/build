@@ -1,6 +1,8 @@
 #!/bin/bash
-KAAZING_JMS_GATEWAY_JAR=kaazing-websocket-gateway-jms-4.0.5.tar.gz
-KAAZING_JMS_GATEWAY_URL=http://kaazingcorp.cachefly.net/com/download/jms/4.0.5.359/kaazing-websocket-gateway-jms-4.0.5.tar.gz
+KAAZING_JMS_GATEWAY=kaazing-websocket-gateway-jms-4.0.5
+ACTIVEMQ=apache-activemq-5.5.1
+KAAZING_JMS_GATEWAY_JAR=$KAAZING_JMS_GATEWAY.tar.gz
+KAAZING_JMS_GATEWAY_URL=http://kaazingcorp.cachefly.net/com/download/jms/4.0.5.359/$KAAZING_JMS_GATEWAY.tar.gz
 
 echo "******* build script from DIY cartridge ..." >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1 
 date >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1
@@ -18,11 +20,12 @@ if [ ! -e "$KAAZING_JMS_GATEWAY_JAR" ]; then
 	tar xzf $KAAZING_JMS_GATEWAY_JAR | tee -a ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1 
 
 	echo "Patching the files with $OPENSHIFT_DIY_IP ..." >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1 
-	sed -i "s/0.0.0.0/$OPENSHIFT_DIY_IP/g" apache-activemq-5.5.1/conf/*.xml
+	sed -i "s/0.0.0.0/$OPENSHIFT_DIY_IP/g" $ACTIVEMQ/conf/*.xml
 
-	# Edit apache-activemq-5.5.1/conf/jetty.xml
 	sed -i "94 a\
-        <property name=\"host\" value=\"$OPENSHIFT_DIY_IP\" />" apache-activemq-5.5.1/conf/jetty.xml
+        <property name=\"host\" value=\"$OPENSHIFT_DIY_IP\" />" $ACTIVEMQ/conf/jetty.xml
+
+	sed -i "s/0.0.0.0/$OPENSHIFT_DIY_IP/g" $KAAZING_JMS_GATEWAY/conf/*.xml
     echo "Patching done." >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1 
 fi
 
