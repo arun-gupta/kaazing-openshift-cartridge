@@ -12,8 +12,8 @@ if [ ! -e "$KAAZING_JMS_GATEWAY_JAR" ]; then
 	tar xzf $KAAZING_JMS_GATEWAY_JAR
 	sed -i "s/0.0.0.0/$OPENSHIFT_DIY_IP/g" apache-activemq-5.5.1/conf/*.xml
 
-	# Edit apache-activemq-5.5.1/conf/jetty.xml, change <host> in fragment shown below:
-	sed "94 a\
-        <property name='host' value='$OPENSHIFT_DIY_IP' />" apache-activemq-5.5.1/conf/jetty.xml
+	# Edit apache-activemq-5.5.1/conf/jetty.xml
+	sed -i "94 a\
+        <property name=\"host\" value=\"$OPENSHIFT_DIY_IP\" />" apache-activemq-5.5.1/conf/jetty.xml
 fi
 
