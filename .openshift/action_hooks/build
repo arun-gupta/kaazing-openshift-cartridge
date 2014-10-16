@@ -10,7 +10,7 @@ if [ ! -e "$KAAZING_JMS_GATEWAY_JAR" ]; then
 	wget $KAAZING_JMS_GATEWAY_URL -O $KAAZING_JMS_GATEWAY_JAR
 
 	tar xzf $KAAZING_JMS_GATEWAY_JAR
-	perl -pi -e 's/0.0.0.0/$OPENSHIFT_DIY_IP/g' apache-activemq-5.5.1/conf/*.xml
+	#perl -pi -e 's/0.0.0.0/$OPENSHIFT_DIY_IP/g' apache-activemq-5.5.1/conf/*.xml
 
 	# Edit apache-activemq-5.5.1/conf/jetty.xml, change <host> in fragment shown below:
 	sed '94 a\
