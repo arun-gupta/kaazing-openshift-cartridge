@@ -2,14 +2,20 @@
 KAAZING_JMS_GATEWAY_JAR=kaazing-websocket-gateway-jms-4.0.5.tar.gz
 KAAZING_JMS_GATEWAY_URL=http://kaazingcorp.cachefly.net/com/download/jms/4.0.5.359/kaazing-websocket-gateway-jms-4.0.5.tar.gz
 
+echo "Building Kaazing Gateway..." >> ${OPENSHIFT_DIY_LOG_DIR}/diy.log 2>&1 
+date >> ${OPENSHIFT_DIY_LOG_DIR}/diy.log 2>&1
+echo "KAAZING_JMS_GATEWAY_JAR: $KAAZING_JMS_GATEWAY_JAR" >> ${OPENSHIFT_DIY_LOG_DIR}/diy.log 2>&1 
+echo "KAAZING_JMS_GATEWAY_URL: $KAAZING_JMS_GATEWAY_URL" >> ${OPENSHIFT_DIY_LOG_DIR}/diy.log 2>&1 
+
 set -x 
 
 cd $OPENSHIFT_DATA_DIR
 
 if [ ! -e "$KAAZING_JMS_GATEWAY_JAR" ]; then
+	echo "Downloading Kaazing Gateway..." >> ${OPENSHIFT_DIY_LOG_DIR}/diy.log 2>&1 
 	wget $KAAZING_JMS_GATEWAY_URL -O $KAAZING_JMS_GATEWAY_JAR
 
-	tar xzf $KAAZING_JMS_GATEWAY_JAR
+	tar xzf $KAAZING_JMS_GATEWAY_JAR | tee ${OPENSHIFT_DIY_LOG_DIR}/diy.log 2>&1 
 	sed -i "s/0.0.0.0/$OPENSHIFT_DIY_IP/g" apache-activemq-5.5.1/conf/*.xml
 
 	# Edit apache-activemq-5.5.1/conf/jetty.xml
