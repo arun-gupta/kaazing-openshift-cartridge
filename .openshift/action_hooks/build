@@ -26,6 +26,7 @@ if [ ! -e "$KAAZING_JMS_GATEWAY_JAR" ]; then
         <property name=\"host\" value=\"$OPENSHIFT_DIY_IP\" />" $ACTIVEMQ/conf/jetty.xml
 
     wget https://raw.githubusercontent.com/arun-gupta/kaazing-openshift-cartridge/master/bin/gateway.openshift.start -O $KAAZING_JMS_GATEWAY/bin/gateway.openshift.start
+    chmod +x $KAAZING_JMS_GATEWAY/bin/gateway.openshift.start
     wget https://raw.githubusercontent.com/arun-gupta/kaazing-openshift-cartridge/master/conf/gateway-config-openshift.xml -O $KAAZING_JMS_GATEWAY/conf/gateway-config-openshift.xml
 
 #   wget https://raw.githubusercontent.com/arun-gupta/kaazing-openshift-cartridge/master/conf/gateway-config.xml -O $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
