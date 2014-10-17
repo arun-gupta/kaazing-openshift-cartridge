@@ -25,18 +25,22 @@ if [ ! -e "$KAAZING_JMS_GATEWAY_JAR" ]; then
 	sed -i "94 a\
         <property name=\"host\" value=\"$OPENSHIFT_DIY_IP\" />" $ACTIVEMQ/conf/jetty.xml
 
-	sed -i "s/localhost/$OPENSHIFT_DIY_IP/g" $KAAZING_JMS_GATEWAY/conf/*.xml
-	sed -i "s/8000/16000/g" $KAAZING_JMS_GATEWAY/conf/*.xml
-	sed -i "s/8001/16001/g" $KAAZING_JMS_GATEWAY/conf/*.xml
-	#sed -i "s/2020/16002/g" $KAAZING_JMS_GATEWAY/conf/*.xml
-	sed -i "512 a\
-        -->" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
-	sed -i "495 a\
-        <!--" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
-	sed -i "491 a\
-        -->" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
-	sed -i "475 a\
-        <!--" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
+    wget https://raw.githubusercontent.com/arun-gupta/kaazing-openshift-cartridge/master/conf/gateway-config.xml -O $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
+	sed -i "s/OPENSHIFT_DIY_IP/$OPENSHIFT_DIY_IP/g" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
+
+#	sed -i "s/localhost/$OPENSHIFT_DIY_IP/g" $KAAZING_JMS_GATEWAY/conf/*.xml
+#	sed -i "s/8000/16000/g" $KAAZING_JMS_GATEWAY/conf/*.xml
+#	sed -i "s/8001/16001/g" $KAAZING_JMS_GATEWAY/conf/*.xml
+#	sed -i "s/61616/16001/g" $KAAZING_JMS_GATEWAY/conf/*.xml
+#	sed -i "s/2020/16002/g" $KAAZING_JMS_GATEWAY/conf/*.xml
+#	sed -i "512 a\
+#        -->" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
+#	sed -i "495 a\
+#        <!--" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
+#	sed -i "491 a\
+#        -->" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
+#	sed -i "475 a\
+#        <!--" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
     echo "Patching done." >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1 
 fi
 
