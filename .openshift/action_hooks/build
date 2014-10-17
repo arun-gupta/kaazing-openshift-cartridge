@@ -4,8 +4,6 @@ ACTIVEMQ=apache-activemq-5.5.1
 KAAZING_JMS_GATEWAY_JAR=$KAAZING_JMS_GATEWAY.tar.gz
 KAAZING_JMS_GATEWAY_URL=http://kaazingcorp.cachefly.net/com/download/jms/4.0.5.359/$KAAZING_JMS_GATEWAY.tar.gz
 
-export GATEWAY_OPTS="-Dopenshift.host=$OPENSHIFT_DIY_IP"
-
 echo "******* build script from DIY cartridge ..." >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1 
 date >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1
 echo "KAAZING_JMS_GATEWAY_JAR: $KAAZING_JMS_GATEWAY_JAR" >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1 
@@ -44,6 +42,7 @@ echo "ActiveMQ done." >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1
 # Start Kaazing JMS Gateway
 date >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1
 echo "Starting Kaazing Gateway ..." >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1 
+#export GATEWAY_OPTS="-Dopenshift.host=$OPENSHIFT_DIY_IP"
 #./$KAAZING_JMS_GATEWAY/bin/gateway.start --config "$KAAZING_JMS_GATEWAY"/conf/gateway-config-openshift.xml > $OPENSHIFT_DIY_LOG_DIR/kaazing-gateway.log 2>&1 &
 ./$KAAZING_JMS_GATEWAY/bin/gateway.openshift.start > $OPENSHIFT_DIY_LOG_DIR/kaazing-gateway.log 2>&1 &
 echo "Kaazing Gateway done." >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1 
