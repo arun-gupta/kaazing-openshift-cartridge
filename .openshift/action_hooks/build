@@ -25,8 +25,8 @@ if [ ! -e "$KAAZING_JMS_GATEWAY_JAR" ]; then
 	sed -i "94 a\
         <property name=\"host\" value=\"$OPENSHIFT_DIY_IP\" />" $ACTIVEMQ/conf/jetty.xml
 
-    cp app-root/repo/bin/gateway.openshift.start $KAAZING_JMS_GATEWAY/bin
-    cp app-root/repo/conf/gateway-config-openshift.xml $KAAZING_JMS_GATEWAY/conf
+    cp ~/app-root/repo/bin/gateway.openshift.start $KAAZING_JMS_GATEWAY/bin
+    cp ~/app-root/repo/conf/gateway-config-openshift.xml $KAAZING_JMS_GATEWAY/conf
 
 #   wget https://raw.githubusercontent.com/arun-gupta/kaazing-openshift-cartridge/master/conf/gateway-config.xml -O $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
 #	sed -i "s/OPENSHIFT_DIY_IP/$OPENSHIFT_DIY_IP/g" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
