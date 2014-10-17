@@ -38,14 +38,6 @@ if [ ! -e "$KAAZING_JMS_GATEWAY_JAR" ]; then
 #	sed -i "s/8001/16001/g" $KAAZING_JMS_GATEWAY/conf/*.xml
 #	sed -i "s/61616/16001/g" $KAAZING_JMS_GATEWAY/conf/*.xml
 #	sed -i "s/2020/16002/g" $KAAZING_JMS_GATEWAY/conf/*.xml
-#	sed -i "512 a\
-#        -->" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
-#	sed -i "495 a\
-#        <!--" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
-#	sed -i "491 a\
-#        -->" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
-#	sed -i "475 a\
-#        <!--" $KAAZING_JMS_GATEWAY/conf/gateway-config.xml
     echo "Patching done." >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1 
 fi
 
@@ -60,6 +52,6 @@ echo "ActiveMQ done." >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1
 # Start Kaazing JMS Gateway
 date >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1
 echo "Starting Kaazing Gateway ..." >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1 
-./kaazing-websocket-gateway-jms-4.0.5/bin/gateway.start --config "$GW_HOME"/conf/gateway-config-openshift.xml > $OPENSHIFT_DIY_LOG_DIR/kaazing-gateway.log 2>&1 &
+./$KAAZING_JMS_GATEWAY/bin/gateway.start --config "$KAAZING_JMS_GATEWAY"/conf/gateway-config-openshift.xml > $OPENSHIFT_DIY_LOG_DIR/kaazing-gateway.log 2>&1 &
 echo "Kaazing Gateway done." >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1 
 
