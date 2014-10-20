@@ -16,7 +16,7 @@ rhc app-create kaazing diy --from-code=git://github.com/arun-gupta/kaazing-opens
 +
 [source,text]
 ----
-rhc port-forward kaazing2
+rhc port-forward kaazing
 Checking available ports ... done
 Forwarding ports ...
 
