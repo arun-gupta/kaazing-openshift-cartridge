@@ -38,7 +38,7 @@ cd $OPENSHIFT_DATA_DIR
 # Start ActiveMQ
 date >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1
 echo "Starting ActiveMQ ..." >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1 
-java -jar apache-activemq-5.5.1/bin/run.jar start >> $OPENSHIFT_DIY_LOG_DIR/activemq-server.log 2>&1 &
+java -jar $ACTIVEMQ/bin/run.jar start >> $OPENSHIFT_DIY_LOG_DIR/activemq-server.log 2>&1 &
 echo "ActiveMQ done." >> ${OPENSHIFT_DIY_LOG_DIR}/start.log 2>&1 
 
 # Start Kaazing JMS Gateway
