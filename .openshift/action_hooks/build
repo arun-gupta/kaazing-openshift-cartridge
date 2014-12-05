@@ -1,8 +1,9 @@
 #!/bin/bash
-KAAZING_JMS_GATEWAY=kaazing-websocket-gateway-jms-4.0.5
+KAAZING_JMS_GATEWAY=kaazing-websocket-gateway-jms-4.0.6
 ACTIVEMQ=apache-activemq-5.5.1
 KAAZING_JMS_GATEWAY_JAR=$KAAZING_JMS_GATEWAY.tar.gz
-KAAZING_JMS_GATEWAY_URL=http://kaazingcorp.cachefly.net/com/download/jms/4.0.5.359/$KAAZING_JMS_GATEWAY.tar.gz
+#KAAZING_JMS_GATEWAY_URL=http://kaazingcorp.cachefly.net/com/download/jms/4.0.6.508/$KAAZING_JMS_GATEWAY.tar.gz
+KAAZING_JMS_GATEWAY_URL=http://tinyurl.com/kvgo5jj
 
 echo "******* build script from DIY cartridge ..." >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1 
 date >> ${OPENSHIFT_DIY_LOG_DIR}/build.log 2>&1
